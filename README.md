@@ -23,6 +23,6 @@
 
 Run `npm run build` will auto build files to folder www.
 
-
+委屈饿
 you can use [nginx](http://nginx.org) or
 [http-server](https://github.com/indexzero/http-server) publish folder www to production server,
