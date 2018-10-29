@@ -1,0 +1,133 @@
+<div class="header clearFix">
+    <h3 class="fl">CPU组Dev机构</h3>
+    <div class="userInfoBox fr">
+        <img class="userImgMin" src="../../img/pic.png" />
+        <div class="userPop">
+            <div class="userPopBox1 clearFix">
+                <img class="userImgBig fl" src="../../img/pic2.png" />
+                <dl class="userInfo fl">
+                    <dt>admin</dt>
+                    <dd>机构管理员</dd>
+                </dl>
+            </div>
+            <div class="userPopBox2 clearFix">
+                <button type="button" class="fl btnCancel">个人设置</button>
+                <button type="button" class="fr btnCancel">注销</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sideBar">
+    <div class="sideLogo">
+        <img src="../../img/logo.png" />
+    </div>
+    <ul class="navList">
+        <li class="navItem icoHome current" ng-click="campCtrl.goToUrl('/home')">教学计划</li>
+        <li class="navItem icoEmployee">课程</li>
+        <li class="navItem icoStudents" ng-click="campCtrl.goToUrl('/subject')">科目</li>
+        <li class="navItem icoClass">知识图谱</li>
+        <li class="navItem icoScores">呵呵设置</li>
+        <li class="navItem icoBedroom">评估项目</li>
+    </ul>
+</div>
+<div class="topBar">
+    <div class="crumbs">
+        当前位置：
+        <span class="crumbsLink">教学设置</span> &gt;
+        <span class="crumbsLink" ng-click="subjectCtrl.goToUrl('/home')">教学计划</span>
+    </div>
+</div>
+<div class="contentBox">
+        <div class="toolBar clearFix">
+            <div class="fl">
+                <!-- <button onclick="add()" class="btnSure btnNormol" type="button">新建员工</button>
+                <button class="btnSure btnNormol" type="button">批量删除</button> -->
+                <!--search box-->
+                <input id="search" type="text" class="searchTxt" placeholder="请输入教学计划模板"/>
+                <button onclick="search()" type="button" class="searchBtn"></button>
+            </div>
+            <div class="fr">
+                
+            </div>
+        </div>
+        <!--content-->
+        <div class="sectionBox">
+            <button class="btnSure sis5">新建教学计划模板</button>
+            <!-- <button class="btnSure sis5">设置班级教学计划{{$ctrl.testComponent}}</button> --><!---->
+            <button class="btnSure sis5">设置班级教学计划</button>
+            <div class="dropBox sis5sel">
+                    <div class="dropValue" ng-click="campCtrl.isSelected = !campCtrl.isSelected ">
+                        <span>{{campCtrl.currentCampus}}</span>
+                        <ul ng-show="campCtrl.isSelected" class="dropList">
+                            <li ng-repeat="item in campCtrl.campus" ng-click="campCtrl.selectItem(item)">{{item}}</li>
+                        </ul>
+                       <!--  <span v-bind:class="[$scope.isSelected? 'null':'dropText']">CPU校区</span>
+                        <span v-bind:class="[$scope.isSelected? 'dropText':'null']">{{currentCampus}}</span>
+                        <span v-bind:class="[isSelected? 'null':'dropText']">请选择人事状态</span>
+                        <span v-bind:class="[isSelected? 'dropText':'null']">{{currentStatus}}</span> 
+                        <span class="dropIcon"></span>-->
+                    </div>
+                    
+            </div>
+            <table class="tableData">
+                    <tr>
+                        <!-- <th width="40">
+                            <span class="checkBox"></span>-->
+                            <!--选中状态加样式的dom结构：<span class="checkBox active"></span>-->
+                        <!--</th> -->
+                        <th>名称</th>
+                        <th>适用校区</th>
+                        <th>描述</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th width="300" style="text-align:center">操作</th>
+                    </tr>
+                    <tbody>
+                        <!-- <tr>
+                            <td colspan="8" class="noData">
+                                <span>无数据</span>
+                            </td>
+                        </tr> -->
+                        <tr ng-repeat="plan in campCtrl.data">
+                            <td>{{plan.name}}</td>
+                            <td>{{plan.usedCampus}}</td>
+                            <td>{{plan.description}}</td>
+                            <td>{{plan.creator}}</td>
+                            <td>{{plan.createTime}}</td>
+                            <td style="text-align:center">
+                                <span class="editText">编辑</span>
+                                <span class="delText">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- page box -->
+            <div class="dataTips">共<span class="stressed">{{campCtrl.data.length}}</span>条数据</div>
+            <div class="page">
+                <span class="pageItem disabled">上一页</span>
+                <span class="pageItem current">1</span>
+                <span class="pageItem">2</span>
+                <span class="pageItem">3</span>
+                <span class="pageItem">4</span>
+                <span class="pageItem">5</span>
+                <span class="pageItem dot">...</span>
+                <span class="pageItem">下一页</span>
+            </div>
+        </div>
+    </div>
+<!--遮罩和弹窗-->
+<!--确认删除-->
+<div id="deleteTips" class="mask" style="display: none;">
+    <div class="popWrap">
+        <div class="popLocal">
+            <div class="popBox">
+                <button onclick="cancel()" type="button" class="popClose"></button>
+                <div class="popConfirm">当前操作将删除所有选中的数据，确定删除吗？</div>
+                <div class="popBtn">
+                    <button onclick="deleteData()" class="btnSure btnNormol" type="button">确定删除</button>
+                    <button onclick="cancel()" class="btnCancel btnNormol" type="button">取消操作</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="header clearFix">
+    <h3 class="fl">CPU组Dev机构</h3>
+    <div class="userInfoBox fr">
+        <img class="userImgMin" src="../../img/pic.png" />
+        <div class="userPop">
+            <div class="userPopBox1 clearFix">
+                <img class="userImgBig fl" src="../../img/pic2.png" />
+                <dl class="userInfo fl">
+                    <dt>admin</dt>
+                    <dd>机构管理员</dd>
+                </dl>
+            </div>
+            <div class="userPopBox2 clearFix">
+                <button type="button" class="fl btnCancel">个人设置</button>
+                <button type="button" class="fr btnCancel">注销</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sideBar">
+    <div class="sideLogo">
+        <img src="../../img/logo.png" />
+    </div>
+    <ul class="navList">
+        <li class="navItem icoHome current">教学计划</li>
+        <li class="navItem icoEmployee">课程</li>
+        <li class="navItem icoStudents">科目</li>
+        <li class="navItem icoClass">知识图谱</li>
+        <li class="navItem icoScores">呵呵设置</li>
+        <li class="navItem icoBedroom">评估项目</li>
+    </ul>
+</div>
+<div class="topBar">
+    <div class="crumbs">
+        当前位置：
+        <span class="crumbsLink">教学设置</span> &gt;
+        <span class="crumbsLink">教学计划</span>
+    </div>
+</div>
+<div class="contentBox">
+    <div class="sectionBox clearFix">
+        <button class="btnBack back" ng-click="newCtrl.goToUrl('/subject')">返回</button>
+        <div class="formBox sis1026">
+                <table class="regTable">
+                    <tr>
+                        <td class="tdLabel"><em class="required">*</em><span>科目编号</span></td>
+                        <td class="tdAddPad">
+                            <input ng-model="newCtrl.subjectNo" type="text" class="inputStyle sizeNormol" placeholder="请输入"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLabel"><em class="required">*</em><span>中文名称</span></td>
+                        <td class="tdPos">
+                            <!--error 为input.inputStyle输入有错时增加类名-->
+                            <input ng-model="newCtrl.cnSubjectName" type="text" class="inputStyle sizeNormol" placeholder="请输入"/>
+                            <!-- <div class="null">不能为空</div> -->
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td class="tdLabel"><em class="required">*</em><span>性别</span></td>
+                        <td class="tdAddPad">
+                            <span v-bind:class="[areUBoy?'radioBox active':'radioBox']" v-on:click="beABoy"></span>
+                            <label class="tdAddPad2">男</label>
+                            <span v-bind:class="[areUBoy?'radioBox':'radioBox active']" v-on:click="beAGirl"></span>
+                            <label class="tdAddPad2">女</label>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td class="tdLabel"><em class="required">*</em><span>英文名称</span></td>
+                        <td class="tdStaff">
+                            <input ng-model="enSubjectName" type="text" class="inputStyle sizeNormol " placeholder="请输入" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLabel"><span>课程体系</span></td>
+                        <td>
+                            <div class="dropBox">
+                                <div class="dropValue" ng-click="newCtrl.isSelected = !newCtrl.isSelected">
+                                    <span>{{newCtrl.lessonEnum[newCtrl.lessonIndex].value}}</span>
+                                    <ul ng-show="newCtrl.isSelected" class="dropList">
+                                        <!--搞清楚为什么要ng-repeat循环遍历,方便指向性操作-->
+                                        <li ng-repeat="enumItem in newCtrl.lessonEnum" ng-click="newCtrl.cag(enumItem)">{{enumItem.value}}</li>
+                                    </ul>
+                                </div>
+                                
+                        </div>
+                            <div class="smallTips">课程体系选择后，将不可修改，请认真选择</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLabel"><span>描述</span></td>
+                        <td>
+                            <div class="dropBox">
+                                <span class="dropValue"  v-on:click="openStatus">
+                                    <span v-bind:class="[isSelected? 'null':'dropText']">组件未开发</span>
+                                    <span v-bind:class="[isSelected? 'dropText':'null']">{{currentStatus}}</span>
+                                    <!--<span class="dropIcon"></span>-->
+                                </span>
+                                <ul v-bind:class="[isOpen ? 'dropList' :'null']">
+                                    <li v-for="item in statusData" v-bind:key="item.id" v-on:click="selectStatus(item)">{{item.status}}</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="formBtn">
+                    <button class="btnSure btnNormol" type="button"  ng-click="newCtrl.save()">保存</button>
+            </div>
+    </div>
+</div>
+<!--遮罩和弹窗-->
+<!--确认删除-->
+<div id="deleteTips" class="mask" style="display: none;">
+    <div class="popWrap">
+        <div class="popLocal">
+            <div class="popBox">
+                <button onclick="cancel()" type="button" class="popClose"></button>
+                <div class="popConfirm">当前操作将删除所有选中的数据，确定删除吗？</div>
+                <div class="popBtn">
+                    <button onclick="deleteData()" class="btnSure btnNormol" type="button">确定删除</button>
+                    <button onclick="cancel()" class="btnCancel btnNormol" type="button">取消操作</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
